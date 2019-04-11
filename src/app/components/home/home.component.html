@@ -1,3 +1,31 @@
-<p>
-  home works!
-</p>
+
+<section>
+  <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+    
+  <div class="mat-elevation-z8">
+      <mat-table  [dataSource]="dataSource" matSort>
+    
+        <!-- ID Column -->
+        <ng-container matColumnDef="Make_ID">
+          <mat-header-cell  *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+          <mat-cell  *matCellDef="let row"> {{row.Make_ID}} </mat-cell>
+        </ng-container>
+    
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="Make_Name">
+          <mat-header-cell  *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+          <mat-cell  *matCellDef="let row"> {{row.Make_Name}} </mat-cell>
+        </ng-container>
+
+    
+        <mat-header-row  *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row matRipple *matRowDef="let row; columns: displayedColumns;" (click)="onMakeClick()"></mat-row>
+      </mat-table>
+    
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+</section>
+  

@@ -13,6 +13,23 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DataService } from './services/data.service';
+import { Routes, RouterModule } from '@angular/router';
+
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'details', component: ManufacturersComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+
+  //{ path: 'path/:routeParam', component: MyComponent },
+  //{ path: 'staticPath', component: ... },
+  //{ path: '**', component: ... },
+  //{ path: 'oldPath', redirectTo: '/staticPath' },
+  //{ path: ..., component: ..., data: { message: 'Custom' }
+];
+
 
 @NgModule({
   declarations: [
@@ -29,9 +46,11 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [DataService],
+  bootstrap: [AppComponent],
+  exports: [RouterModule]
 })
 export class AppModule { }
