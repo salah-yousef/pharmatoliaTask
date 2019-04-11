@@ -1,5 +1,65 @@
 <section>
-  <p>
-    manufacturers works!
-  </p>
+  <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="start start">
+    <mat-card class="example-card" *ngFor="let brand of brands">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{brand.Mfr_CommonName}}</mat-card-title>
+        <mat-card-subtitle>{{brand.StateProvince}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list *ngIf="brand">
+          <h3 matSubheader>Details</h3>
+          <mat-list-item *ngIf="brand.ManufacturerTypes.length > 0">
+            <mat-icon matListIcon>info</mat-icon>
+            <h4 matLine>ManufacturerTypes</h4>
+            <p matLine class="demo-2" *ngFor="let ManufacturerType of brand.ManufacturerTypes">
+              {{ManufacturerType.Name}}
+            </p>
+          </mat-list-item>
+          <mat-list-item *ngIf="brand.LastUpdated">
+            <mat-icon matListIcon>info</mat-icon>
+            <h4 matLine>LastUpdated</h4>
+            <p matLine class="demo-2">
+              {{brand.LastUpdated}}
+            </p>
+          </mat-list-item>
+          <mat-list-item *ngIf="brand.Mfr_CommonName">
+            <mat-icon matListIcon>info</mat-icon>
+            <h4 matLine>Mfr_CommonName</h4>
+            <p matLine class="demo-2">
+              {{brand.Mfr_CommonName}}
+            </p>
+          </mat-list-item>
+          <mat-list-item *ngIf="brand.Mfr_Name">
+            <mat-icon matListIcon>info</mat-icon>
+            <h4 matLine>Mfr_Name</h4>
+            <p matLine class="demo-2">
+              {{brand.Mfr_Name}}
+            </p>
+          </mat-list-item>
+          <mat-list-item *ngIf="brand.PostalCode">
+            <mat-icon matListIcon>info</mat-icon>
+            <h4 matLine>PostalCode</h4>
+            <p matLine class="demo-2">
+              {{brand.PostalCode}}
+            </p>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-icon-button>
+          <mat-icon aria-label="Example icon-button with a email icon" [matTooltip]="brand.ContactEmail">email
+          </mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon aria-label="Example icon-button with a phone icon" [matTooltip]="brand.ContactPhone">phone
+          </mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon aria-label="Example icon-button with a phone icon" [matTooltip]="brand.Address+', '+ brand.City">
+            location_on</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
 </section>

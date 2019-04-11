@@ -9,14 +9,24 @@ import { catchError, tap } from "rxjs/operators";
 })
 export class DataService {
 
-  private url = 'https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json';
+  private getallmakesUrl = 'https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json';
+  private getmanufacturerdetailsUrl = 'https://vpic.nhtsa.dot.gov/api/vehicles/getmanufacturerdetails/';
   constructor(private http: HttpClient) { }
 
 
   getMakes()  {
-    return this.http.get(this.url).pipe(
+    return this.http.get(this.getallmakesUrl).pipe(
       tap(data => {
         //console.log(`All: ${JSON.stringify(data)}`)
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  getBrand(brand: string) {
+    return this.http.get(this.getmanufacturerdetailsUrl + brand+ "?format=json").pipe(
+      tap(data => {
+        //console.log(`manufacturerdetail: ${JSON.stringify(data)}`)
       }),
       catchError(this.handleError)
     );
@@ -32,4 +42,5 @@ export class DataService {
     console.error(errorMessage);
     return throwError(errorMessage);
   }
+
 }
