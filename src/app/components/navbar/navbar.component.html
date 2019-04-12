@@ -2,11 +2,18 @@
     <mat-toolbar color="primary">
     <mat-toolbar-row>
         <button mat-icon-button class="logo"  [routerLink]="[ '/']">
-            <img src="../../../assets//img/logo.svg" alt="" srcset="">
+            <img src="../../../assets//img/logo.svg" alt="logo">
         </button>
             <span class="example-spacer"></span>
-            <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
-            <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
+            <button mat-icon-button *ngIf="isLoggedIn" (click)="onLogoutClick()">
+                <mat-icon class="example-icon" aria-hidden="false" aria-label="exit_to_app icon">input</mat-icon>
+            </button>
+            <button mat-icon-button *ngIf="isLoggedIn">
+                <mat-icon class="example-icon" aria-hidden="false" aria-label="person icon">person</mat-icon>
+            </button>
+            <button *ngIf="!isLoggedIn" mat-flat-button color="primary" [routerLink]="[ '/login' ]">Login</button>
+            <button *ngIf="!isLoggedIn" mat-flat-button color="primary" [routerLink]="[ '/register' ]">Register</button>
+
     </mat-toolbar-row>
   </mat-toolbar>
 </mat-sidenav-container>

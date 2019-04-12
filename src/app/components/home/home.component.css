@@ -18,3 +18,7 @@ table {
   mat-table mat-row.mat-row{
     cursor: pointer;
   }
+
+  mat-spinner {
+    margin:10% auto;
+  }

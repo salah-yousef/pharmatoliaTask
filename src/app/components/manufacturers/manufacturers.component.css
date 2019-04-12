@@ -26,3 +26,6 @@ section{
     flex-grow: 1;
     overflow: hidden; 
 }
+mat-spinner {
+    margin:25% auto;
+}

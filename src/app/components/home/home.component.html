@@ -3,8 +3,8 @@
   <mat-form-field>
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
   </mat-form-field>
-    
-  <div class="mat-elevation-z8">
+  <mat-spinner *ngIf="!dataSource"></mat-spinner> 
+  <div [hidden]="!dataSource" class="mat-elevation-z8">
       <mat-table  [dataSource]="dataSource" matSort>
     
         <!-- ID Column -->
