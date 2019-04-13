@@ -20,7 +20,6 @@ export class ManufacturersComponent implements OnInit {
     this.brandsParameters = this.route.snapshot.paramMap.get('brand');
     this.dataService.getBrand(this.brandsParameters).subscribe((brand: any) => {
       this.brands = (brand.Results);
-      console.log(typeof(this.brands))
     }) 
   }
 

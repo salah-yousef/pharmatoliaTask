@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterialModule } from "./shared/material.module";
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FlashMessagesModule } from 'angular2-flash-messages';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireDatabase } from "@angular/fire/database";
@@ -65,8 +65,8 @@ const routes: Routes = [
     MaterialModule,
     RouterModule.forRoot(routes),
     FlexLayoutModule,
-    FlashMessagesModule.forRoot(),
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    NgScrollbarModule
   ],
   providers: [
     DataService,
